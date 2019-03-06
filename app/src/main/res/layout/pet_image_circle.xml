@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="viewHolder"
+            type="jp.aquabox.app.everycatanddoggit.view.PetUserImageViewHolder" />
+
+        <variable
+            name="context"
+            type="android.content.Context" />
+
+    </data>
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:contentDescription="@null"
+        android:onClick="@{() -> viewHolder.onClick(context)}"
+        android:scaleType="centerCrop"
+        android:src="@{viewHolder.photo}" />
+
+</layout>
