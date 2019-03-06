@@ -5,8 +5,12 @@
     <data>
 
         <variable
-            name="controller"
-            type="jp.aquabox.app.everycatanddoggit.AnimalUserInputActivity" />
+            name="context"
+            type="android.content.Context" />
+
+        <variable
+            name="viewModel"
+            type="jp.aquabox.app.everycatanddoggit.view.AnimalUserViewModel" />
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -70,7 +74,7 @@
                     android:layout_below="@id/pet_name_title"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="ペットの名前"
+                    android:text="@{viewModel.petUserItem.name}"
                     android:textSize="40sp" />
 
                 <TextView
@@ -90,7 +94,7 @@
                     android:layout_below="@id/pet_sex_title"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="おとこ"
+                    android:text="@{viewModel.petUserItem.getSexText()}"
                     android:textSize="40sp" />
 
                 <TextView
@@ -110,7 +114,7 @@
                     android:layout_below="@id/pet_birthday_title"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="2007/12/3"
+                    android:text="@{viewModel.petUserItem.getBarthDayText()}"
                     android:textSize="40sp" />
 
                 <TextView
@@ -130,7 +134,7 @@
                     android:layout_below="@id/pet_hospital_title"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="イオン動物"
+                    android:text="@{viewModel.petUserItem.hospital}"
                     android:textSize="40sp" />
 
                 <TextView
@@ -159,7 +163,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
-            android:onClick="@{controller::onFabClick}"
+            android:onClick="@{() -> viewModel.onFabClick(context)}"
             android:src="@drawable/ic_edit"
             app:backgroundTint="@android:color/holo_blue_light"
             app:layout_anchor="@id/app_bar_layout"

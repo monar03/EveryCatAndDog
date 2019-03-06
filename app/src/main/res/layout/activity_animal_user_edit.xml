@@ -5,8 +5,13 @@
     <data>
 
         <variable
-            name="controller"
+            name="viewModel"
+            type="jp.aquabox.app.everycatanddoggit.view.AnimalUserViewModel" />
+
+        <variable
+            name="action"
             type="jp.aquabox.app.everycatanddoggit.AnimalUserEditActivity" />
+
     </data>
 
     <android.support.design.widget.CoordinatorLayout
@@ -75,7 +80,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:inputType="text"
-                        android:text="ペットの名前"
+                        android:text="@{viewModel.petUserItem.name}"
                         android:textSize="40sp" />
 
                     <TextView
@@ -96,7 +101,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:inputType="text"
-                        android:text="おとこ"
+                        android:text="@{viewModel.petUserItem.getSexText()}"
                         android:textSize="40sp" />
 
                     <TextView
@@ -117,7 +122,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:inputType="date"
-                        android:text="2007/12/3"
+                        android:text="@{viewModel.petUserItem.getBarthDayText()}"
                         android:textSize="40sp" />
 
                     <TextView
@@ -138,7 +143,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="5dp"
                         android:inputType="text"
-                        android:text="イオン動物"
+                        android:text="@{viewModel.petUserItem.hospital}"
                         android:textSize="40sp" />
 
                     <android.support.design.button.MaterialButton
@@ -151,9 +156,9 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginEnd="10dp"
                         android:layout_marginBottom="10dp"
+                        android:onClick="@{() -> action.onSave()}"
                         android:text="保存"
                         android:textSize="40sp"
-                        android:onClick="@{controller::onSave}"
                         app:backgroundTint="@color/colorPrimary" />
                 </RelativeLayout>
 
@@ -164,7 +169,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="30dp"
-            android:onClick="@{controller::onFabClick}"
+            android:onClick="@{() -> action.onFabClick()}"
             android:src="@drawable/ic_camera"
             app:backgroundTint="@android:color/holo_blue_light"
             app:layout_anchor="@id/app_bar_layout"

@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="16dp"
-            android:onClick="@{controller::fabClick}"
+            android:onClick="@{() -> controller.fabClick()}"
             android:src="@drawable/ic_camera"
             app:backgroundTint="@android:color/holo_blue_bright"
             app:fabSize="auto" />

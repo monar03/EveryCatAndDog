@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".DetailActivity" />
-        <activity android:name=".AnimalUserInputActivity" />
+        <activity android:name=".AnimalUserActivity" />
         <activity android:name=".AnimalUserEditActivity" />
 
     </application>
