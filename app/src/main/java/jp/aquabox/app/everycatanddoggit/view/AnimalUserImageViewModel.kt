@@ -3,16 +3,22 @@ package jp.aquabox.app.everycatanddoggit.view
 import android.arch.lifecycle.ViewModel
 import android.content.Context
 import android.content.Intent
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import jp.aquabox.app.everycatanddoggit.AnimalUserActivity
 import jp.aquabox.app.everycatanddoggit.AnimalUserEditActivity
+import jp.aquabox.app.everycatanddoggit.R
+import jp.aquabox.app.everycatanddoggit.data.PetUserItem
 
-class AnimalUserImageViewModel(val id: Long, val photo: Drawable?) : ViewModel() {
+class AnimalUserImageViewModel(context: Context, private val item: PetUserItem?) : ViewModel() {
+    val photo: Drawable = item?.let {
+        BitmapDrawable(null, BitmapFactory.decodeByteArray(it.photo, 0, it.photo!!.size))
+    } ?: context.getDrawable(R.drawable.ic_add_animal)!!
+
     fun onClick(context: Context) {
-        if (id < 0) {
-            context.startActivity(Intent(context, AnimalUserEditActivity::class.java))
-        } else {
-            context.startActivity(AnimalUserActivity.createIntent(context, id))
-        }
+        item?.let {
+            context.startActivity(AnimalUserActivity.createIntent(context, it.id))
+        } ?: context.startActivity(Intent(context, AnimalUserEditActivity::class.java))
     }
 }

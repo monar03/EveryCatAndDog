@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.databinding.DataBindingUtil
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.provider.MediaStore
 import android.support.v7.app.AppCompatActivity
@@ -35,7 +33,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         binding.controller = this
-        loadView()
     }
 
     override fun onResume() {
@@ -102,8 +99,8 @@ class MainActivity : AppCompatActivity() {
                                             .inflate<PetImageCircleBinding>(layoutInflater, R.layout.pet_image_circle, binding.petList, true)
                                             .apply {
                                                 viewModel = AnimalUserImageViewModel(
-                                                        it.id,
-                                                        BitmapDrawable(null, BitmapFactory.decodeByteArray(it.photo, 0, it.photo!!.size))
+                                                        this@MainActivity,
+                                                        it
                                                 )
                                                 context = this@MainActivity
                                             }
@@ -113,8 +110,8 @@ class MainActivity : AppCompatActivity() {
                                         .inflate<PetImageCircleBinding>(layoutInflater, R.layout.pet_image_circle, binding.petList, true)
                                         .apply {
                                             viewModel = AnimalUserImageViewModel(
-                                                    -1,
-                                                    getDrawable(R.drawable.ic_add_animal)
+                                                    this@MainActivity,
+                                                    null
                                             )
                                             context = this@MainActivity
                                         }
