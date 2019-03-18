@@ -14,7 +14,7 @@ import jp.aquabox.app.everycatanddoggit.data.PetUserItem
 class AnimalUserImageViewModel(context: Context, private val item: PetUserItem?) : ViewModel() {
     val photo: Drawable = item?.let {
         BitmapDrawable(null, BitmapFactory.decodeByteArray(it.photo, 0, it.photo!!.size))
-    } ?: context.getDrawable(R.drawable.ic_add_animal)!!
+    } ?: context.getDrawable(R.drawable.add_animal)!!
 
     fun onClick(context: Context) {
         item?.let {

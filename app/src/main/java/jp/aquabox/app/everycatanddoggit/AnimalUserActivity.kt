@@ -30,7 +30,10 @@ class AnimalUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_animal_user)
         binding.context = this
+    }
 
+    override fun onResume() {
+        super.onResume()
         val db: PhotoDatabase = PhotoDatabase.database(this)
         compositeDisposable.add(
                 db.petUserDao()
@@ -43,8 +46,6 @@ class AnimalUserActivity : AppCompatActivity() {
                                 }
                         )
         )
-
     }
-
 
 }
