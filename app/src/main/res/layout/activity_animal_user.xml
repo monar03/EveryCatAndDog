@@ -34,7 +34,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@null"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/add_animal" />
+                    android:src="@{viewModel.drawable}" />
 
                 <android.support.v7.widget.Toolbar
                     android:id="@+id/tool_bar"
